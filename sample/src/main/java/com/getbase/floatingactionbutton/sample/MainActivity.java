@@ -1,8 +1,5 @@
 package com.getbase.floatingactionbutton.sample;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
-
 import android.app.Activity;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -10,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 public class MainActivity extends Activity {
   @Override
@@ -33,16 +33,19 @@ public class MainActivity extends Activity {
 
     final View actionB = findViewById(R.id.action_b);
 
-    FloatingActionButton actionC = new FloatingActionButton(getBaseContext());
+      final FloatingActionButton actionC = new FloatingActionButton(getBaseContext());
     actionC.setTitle("Hide/Show Action B");
     actionC.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         actionB.setVisibility(actionB.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+          ((FloatingActionsMenu) findViewById(R.id.multiple_actions)).hideLabels(actionC);
       }
     });
     ((FloatingActionsMenu) findViewById(R.id.multiple_actions)).addButton(actionC);
-
+      //actionC.delTitle();
+      //actionC.setTitle("123");
+      //((FloatingActionsMenu) findViewById(R.id.multiple_actions)).flashLabels();
     final FloatingActionButton removeAction = (FloatingActionButton) findViewById(R.id.button_remove);
     removeAction.setOnClickListener(new OnClickListener() {
       @Override
